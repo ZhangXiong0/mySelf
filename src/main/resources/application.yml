@@ -1,0 +1,34 @@
+# ???????????????????????????????????? override = false????????????
+server:
+  port: -1
+spring:
+  main:
+    web-application-type: none
+    allow-bean-definition-overriding: true
+  application:
+    name: testSelf
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      config:
+        import-check:
+          enabled: false
+      discovery:
+        service-name: ${spring.application.name}
+        preferIpAddress: true
+        instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.8.0.1:3306/banjiang?useSSL=false&useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true
+    username: banjiang_dev
+    password: 'BjSTCY666888,.'
+grpc:
+  port: 0
+  enable-reflection: true
+  security:
+    auth:
+      enabled: false
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
