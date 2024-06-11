@@ -1,5 +1,6 @@
 package com.zx.testself;
 
+import com.zx.testself.completable.CompletableFutureService;
 import com.zx.testself.functionalInterface.DataTypeReq;
 import com.zx.testself.functionalInterface.FunctionalInterfaceService;
 import org.junit.jupiter.api.Test;
@@ -20,6 +21,10 @@ public class FunctionTest {
   @Autowired
   private FunctionalInterfaceService functionalInterfaceService;
 
+
+  @Autowired
+  private CompletableFutureService completableFutureService;
+
   @Test
   void testFunction() {
     DataTypeReq dataTypeReq = new DataTypeReq();
@@ -38,5 +43,16 @@ public class FunctionTest {
     functionalInterfaceService.test(dataTypeReq3);
   }
 
+
+
+  @Test
+  void testCompletableFuture() {
+    try {
+      completableFutureService.dealBusiness();
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
 
 }
